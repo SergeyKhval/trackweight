@@ -24,8 +24,8 @@
 </div>
 <p class="clearfix"></p>
 
-<ul>
+<ul class="list-unstyled">
   <li ng-repeat="weight in weights">
-    <span>{{weight.time | date: 'dd-MM-yyyy'}}</span> - <span>{{weight.weight}}</span>
+    <span>{{weight.time | date: 'dd MMMM yyyy'}}</span> - <span>{{weight.weight}} kg</span>
   </li>
 </ul>
