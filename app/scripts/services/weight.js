@@ -1,3 +1,5 @@
+/*globals Firebase: false*/
+
 'use strict';
 
 /**
@@ -8,16 +10,23 @@
  * Factory in the trackWeightApp.
  */
 angular.module('trackWeightApp')
-  .factory('weight', function () {
-    // Service logic
-    // ...
+  .factory('Weight', function ($firebaseArray, Ref) {
+    var Weight;
 
-    var meaningOfLife = 42;
+    Weight = {};
 
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
+    Weight.storeWeight = function (userId, weight) {
+      var weightArray = $firebaseArray(Ref.child('users/' + userId + '/weights'));
+
+      weightArray.$add({
+        weight: weight,
+        time: Firebase.ServerValue.TIMESTAMP
+      });
     };
+
+    Weight.getWeights = function (userId) {
+      return $firebaseArray(Ref.child('users/' + userId + '/weights'));
+    };
+
+    return Weight;
   });

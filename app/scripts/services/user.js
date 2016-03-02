@@ -54,5 +54,9 @@ angular.module('trackWeightApp')
       return Auth.$authWithPassword({email: userObj.email, password: userObj.pass}, {rememberMe: true});
     };
 
+    User.getUserId = function(){
+      return Ref.getAuth().uid;
+    };
+
     return User;
   });
