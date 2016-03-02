@@ -34,7 +34,7 @@ angular.module('trackWeightApp')
       }
 
       function createProfile(user) {
-        var ref = Ref.child('users', user.uid), def = $q.defer();
+        var ref = Ref.child('users/' + user.uid), def = $q.defer();
         ref.set({email: email, name: firstPartOfEmail(email)}, function(err) {
           $timeout(function() {
             if( err ) {
@@ -60,7 +60,7 @@ angular.module('trackWeightApp')
       return f + str.substr(1);
     }
 
-  
+
 
     function redirect() {
       $location.path('/account');
