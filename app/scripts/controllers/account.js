@@ -27,13 +27,17 @@ angular.module('trackWeightApp')
     var profile = $firebaseObject(Ref.child('users/' + user.uid));
 
     $scope.user = user;
-    $scope.weights = Weight.getWeights(user.uid);
+    $scope.weights = null;
     $scope.logout = function () {
       Auth.$unauth();
     };
     $scope.messages = [];
 
     profile.$bindTo($scope, 'profile');
+
+    Weight.getWeights(user.uid).$loaded().then(function(data){
+      $scope.weights = data;
+    });
 
 
     $scope.changePassword = function (oldPass, newPass, confirm) {
