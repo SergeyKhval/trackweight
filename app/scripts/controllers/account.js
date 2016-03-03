@@ -68,6 +68,7 @@ angular.module('trackWeightApp')
     };
 
     $scope.saveWeight = function (weight) {
-      return Weight.storeWeight(user.uid, parseInt(weight));
+      Weight.storeWeight(user.uid, parseFloat(weight));
+      $scope.weight = '';
     };
   });

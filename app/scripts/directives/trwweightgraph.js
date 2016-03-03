@@ -67,7 +67,7 @@ angular.module('trackWeightApp')
 
             vis.append('svg:path')
               .attr('d', lineFunc(scope.data))
-              .attr('stroke', 'blue')
+              .attr('stroke', '#337ab7')
               .attr('stroke-width', 2)
               .attr('fill', 'none');
           }
